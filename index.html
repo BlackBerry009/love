@@ -8,14 +8,77 @@
       content="initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
     />
     <link rel="stylesheet" href="./index.css" type="text/css" />
+    <style>
+      .heart {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: pink;
+        height: 50px;
+        width: 50px;
+        transform: rotate(-45deg);
+        animation-name: beat;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+      .heart:after {
+        background-color: pink;
+        content: "";
+        border-radius: 50%;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0px;
+        left: 25px;
+      }
+      .heart:before {
+        background-color: pink;
+        content: "";
+        border-radius: 50%;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: -25px;
+        left: 0px;
+      }
+
+      @keyframes beat {
+        0% {
+          transform: scale(1) rotate(-45deg);
+        }
+        50% {
+          transform: scale(0.6) rotate(-45deg);
+        }
+      }
+    </style>
     <script src="./index.js" defer></script>
     <script src="./main.js" defer></script>
+    <script>
+      const beginTime = new Date("2022/10/24").getTime();
+      setInterval(() => {
+        const now = new Date();
+        const gapTotalTime = new Date().getTime() - beginTime;
+        const gapDay = Math.floor(
+          (now.getTime() - beginTime) / (1000 * 60 * 60 * 24)
+        );
+        const time = now.toLocaleTimeString();
+        document.getElementById(
+          "subheading"
+        ).innerText = `这是我们在一起的第 ${gapDay} 天 ${time}`;
+      }, 1000);
+    </script>
   </head>
   <body>
     <section id="intro">
       <header>
-        <h1 id="heading">2022,<br />10/24，<br />我们在一起了</h1>
-        <h2 id="subheading">这是我们在一起的第 0 天 24:00:00</h2>
+        <h1 id="heading">
+          2022,<br />10/24，<br />我们在一起了
+          <span class="heart"></span>
+        </h1>
+        <h2 id="subheading"></h2>
         <div id="slice-left" class="slice left"></div>
         <div id="slice-right" class="slice right"></div>
       </header>
@@ -23,88 +86,84 @@
 
     <section id="content">
       <p id="text-become-autodidact">于高中相逢。</p>
-      <p id="text-learn-from">
-        时隔六年，<br />又一次相遇。
+      <p id="text-learn-from">时隔六年，<br />又一次相遇。</p>
+
+      <p id="traveling">未曾想起，<br />也从未忘记，<br />我爱你。</p>
+
+      <p id="sentence1">
+        连我都羡慕 <br />
+        你在我心里的位置
       </p>
 
-
-      <p id="traveling">
-        旅行是从大自然学习的最佳方式。<br />走遍世界，对我而言不仅仅是个梦想。
+      <p id="sentence2">
+        活在当下，并不是结局不重要 <br />
+        而是我更在意结局 <br />
+        才更加珍惜当下
       </p>
 
-      <div id="globe-container">
+      <p id="sentence3">
+        也许 <br />
+        你望着月亮时 <br />
+        我正在想你
+      </p>
+
+      <p id="sentence4">
+        风也温柔 <br />
+        你也温柔
+      </p>
+      <div id="globe-container" style="visibility: hidden; height: 200px">
         <canvas id="globe"></canvas>
       </div>
     </section>
 
     <section id="photography">
-      <p>旅行，让我爱上摄影；<br />摄影，让我更爱旅行。</p>
+      <p>谢谢你，<br />带给我一份甜蜜的回忆。</p>
 
       <div id="group">
-        <img
-          id="photo-a"
-          src="https://v7.res.dandyweng.com/images/4436fbef.jpg"
-        />
-        <img
-          id="photo-b"
-          src="https://v7.res.dandyweng.com/images/538f4f8a.jpg"
-        />
-        <img
-          id="photo-c"
-          src="https://v7.res.dandyweng.com/images/dc4a72be.jpg"
-        />
-        <img
-          id="photo-d"
-          src="https://v7.res.dandyweng.com/images/42229791.jpg"
-        />
-        <img
-          id="photo-e"
-          src="https://v7.res.dandyweng.com/images/1739332d.jpg"
-        />
-        <img
-          id="photo-f"
-          src="https://v7.res.dandyweng.com/images/99117f15.jpg"
-        />
-        <img
-          id="photo-g"
-          src="https://v7.res.dandyweng.com/images/4b9aba52.jpg"
-        />
-        <img
-          id="photo-h"
-          src="https://v7.res.dandyweng.com/images/544067cd.jpg"
-        />
+        <img id="photo-a" src="./imgs/photo1.jpg" />
+        <img id="photo-b" src="./imgs/photo2.jpg" />
+        <img id="photo-c" src="./imgs/photo5.jpg" />
+        <img id="photo-d" src="./imgs/photo6.jpg" />
+        <img id="photo-e" src="./imgs/photo3.jpg" />
+        <img id="photo-f" src="./imgs/photo4.jpg" />
+        <img id="photo-g" src="./imgs/photo8.jpg" />
+        <img id="photo-h" src="./imgs/photo7.jpg" />
       </div>
     </section>
 
     <section id="design">
       <p id="text-design">
-        我喜欢设计各种东西，从家居到平面、网页、视觉识别、用户体验等等。
+        我喜欢你，喜欢你的乐观，开朗，温柔，体贴...<br />
+        你喜欢的，我愿意一起陪你<br />
+        因为 <br />
+        陪伴才是最长情的告白
       </p>
-      <p id="text-dot-connecting">
-        我不断尝试把自己的所想所爱结合在一起，创造些有意思的东西。
+      <p id="text-dot-connecting" style="margin-top: 400px">
+        你的过去我不了解，你的未来我想参与
       </p>
     </section>
 
-    <section id="camarts" class="products">
+    <section id="camarts" class="products" style="margin-top: 200px">
       <div id="backdrop"></div>
       <div id="text-camarts" class="content">
         <p>
-          Camarts 是我正在<span class="a">设计</span>与开发的个人<span class="b"
-            >摄影</span
-          >作品展示平台，用来发布我在<span class="c">旅行</span
-          >途中拍摄的照片，同时也促使我不断提高自己的<span class="d">编程</span
-          >技能。
+          最近我特别特别特别特别<span class="a">开心</span>，因为<span class="b"
+            >有你</span
+          >，在难捱的日子里，觉得好<span class="c">幸福</span
+          >，原来生活并不是苦涩的😊。
         </p>
         <p>
-          在这里，我能将所有兴趣爱好都<span class="e">结合</span
-          >在一起，并且发挥到极致。而实现这一切的前提，是我所选择的<span
-            class="f"
-            >自学</span
-          >之路。
+          你说，所有的<span class="d">巧合</span>都不是<span class="e"
+            >偶然</span
+          >
+          。是的，因为我蓄谋已久，哈哈哈哈哈哈~
         </p>
-        <a href="https://camarts.cn/?bN" target="_blank" class="button"
-          >浏览摄影作品</a
-        >
+        <p>
+          希望深爱过的人，都可以久别重逢， <span class="f">如我们一样</span>
+        </p>
+        <div style="text-align: center">
+          <a target="_blank" class="button">我们的故事还未完待续...</a>
+        </div>
       </div>
     </section>
   </body>

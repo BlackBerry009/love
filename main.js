@@ -155,11 +155,59 @@ class Scene {
       TweenMax.fromTo(
         "#traveling",
         1,
-        { y: 200 },
-        { y: 380, ease: Linear.easeNone }
+        { y: 300 },
+        { y: 480, ease: Linear.easeNone }
       ),
       TweenMax.fromTo(
         "#traveling",
+        0.5,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence1",
+        1,
+        { y: 200 },
+        { x: -1000, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence1",
+        0.5,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence2",
+        1,
+        { x: 0, y: 0 },
+        { x: 500, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence2",
+        0.5,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence3",
+        1,
+        { y: -200 },
+        { x: -500, y: 1000, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence3",
+        0.5,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence4",
+        1,
+        { x: 0, y: -300 },
+        { x: 200, y: 800, ease: Linear.easeNone }
+      ),
+      TweenMax.fromTo(
+        "#sentence4",
         0.5,
         { autoAlpha: 0 },
         { autoAlpha: 1, ease: Linear.easeNone }
@@ -313,8 +361,8 @@ class Scene {
       TweenMax.fromTo(
         "#text-dot-connecting",
         1,
-        { yPercent: 30, autoAlpha: 0 },
-        { yPercent: 0, autoAlpha: 1, ease: Linear.easeNone }
+        { autoAlpha: 0 },
+        { autoAlpha: 1, ease: Linear.easeNone }
       ),
     ]);
     return new ScrollMagic.Scene({
