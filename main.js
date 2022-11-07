@@ -16,7 +16,7 @@ function setTime() {
     const gapDay = Math.floor(
       (now.getTime() - beginTime) / (1000 * 60 * 60 * 24)
     );
-    const time = now.toLocaleTimeString();
+    const time = new Date().toTimeString().split(' ')[0];
     document.getElementById(
       "subheading"
     ).innerText = `这是我们在一起的第 ${gapDay} 天 ${time}`;
