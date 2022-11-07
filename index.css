@@ -1,17 +1,4 @@
 @charset "utf-8";
-@font-face {
-  font-family: "plantc";
-  src: url("fonts/plantc.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Source Han Serif";
-  src: url("fonts/SourceHanSerifCN-SemiBold.woff2") format("woff2"),
-    url("fonts/SourceHanSerifCN-SemiBold.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 :root {
   --color-font: #404040;
   --color-background: #fdfdfd;
@@ -303,7 +290,6 @@ section .content p,
 }
 .products .button::after {
   content: " ";
-  background-image: url("images/chevron.svg");
   position: absolute;
   width: 12px;
   height: 22px;

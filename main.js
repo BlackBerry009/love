@@ -1,6 +1,6 @@
 var globe, scene, node, guestbook;
 window.onload = () => {
-  (globe = new Globe()).init(),
+  // (globe = new Globe()).init(),
     (scene = new Scene()).init(),
     (node = new Node()),
     (guestbook = new Guestbook()).init();
@@ -92,7 +92,7 @@ class Scene {
     this.controller.addScene([
       this.intro(),
       this.autodidact(),
-      this.globe(),
+      // this.globe(),
       this.photo(),
       this.node(),
       this.design(),
@@ -219,28 +219,28 @@ class Scene {
       offset: 500,
     }).setTween(e);
   }
-  globe() {
-    const e = d3.scale.linear().domain([375, 2560]).range([3, 6]),
-      t = new TimelineMax().add([
-        TweenMax.fromTo(
-          "#globe-container",
-          0.8,
-          { "-webkit-filter": `blur(${e(window.innerWidth)}px)` },
-          { "-webkit-filter": "blur(0)", ease: Linear.easeNone }
-        ),
-        TweenMax.fromTo(
-          "#globe",
-          1,
-          { scale: Math.max(800, window.innerWidth) / globe.diameter },
-          { scale: 1, y: 220, ease: Linear.easeNone }
-        ),
-      ]);
-    return new ScrollMagic.Scene({
-      triggerElement: "#content",
-      duration: "50%",
-      offset: 380,
-    }).setTween(t);
-  }
+  // globe() {
+  //   const e = d3.scale.linear().domain([375, 2560]).range([3, 6]),
+  //     t = new TimelineMax().add([
+  //       TweenMax.fromTo(
+  //         "#globe-container",
+  //         0.8,
+  //         { "-webkit-filter": `blur(${e(window.innerWidth)}px)` },
+  //         { "-webkit-filter": "blur(0)", ease: Linear.easeNone }
+  //       ),
+  //       TweenMax.fromTo(
+  //         "#globe",
+  //         1,
+  //         { scale: Math.max(800, window.innerWidth) / globe.diameter },
+  //         { scale: 1, y: 220, ease: Linear.easeNone }
+  //       ),
+  //     ]);
+  //   return new ScrollMagic.Scene({
+  //     triggerElement: "#content",
+  //     duration: "50%",
+  //     offset: 380,
+  //   }).setTween(t);
+  // }
   photo() {
     const e = new TimelineMax().add([
       TweenMax.to("#group", 1, {
