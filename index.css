@@ -93,12 +93,12 @@ section .content p,
   box-shadow: 0 20px 90px 0 rgba(0, 0, 0, 0.08), 0 9px 30px 0 rgba(0, 0, 0, 0.1);
 }
 .slice.left {
-  background-image: url("http://rkyyw194i.hd-bkt.clouddn.com/pic.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/pic.png");
   grid-area: ls;
   background-position: left;
 }
 .slice.right {
-  background-image: url("http://rkyyw194i.hd-bkt.clouddn.com/pic2.png");
+  background-image: url("https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/pic2.png");
   grid-area: rs;
   background-position: right;
 }
