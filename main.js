@@ -1,9 +1,15 @@
-var globe, scene, node, guestbook;
-window.onload = () => {
-  // (globe = new Globe()).init(),
-  (scene = new Scene()).init(),
-    (node = new Node()),
-    (guestbook = new Guestbook()).init();
+var globe, scene;
+
+window.addEventListener("load", () => {
+  const scene = new Scene();
+  scene.init();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  setTime();
+});
+
+function setTime() {
   const beginTime = new Date("2022/10/24").getTime();
   setInterval(() => {
     const now = new Date();
@@ -15,86 +21,8 @@ window.onload = () => {
       "subheading"
     ).innerText = `这是我们在一起的第 ${gapDay} 天 ${time}`;
   }, 1000);
-};
-class Globe {
-  constructor() {
-    (this.canvas = document.getElementById("globe")),
-      (this.planet = planetaryjs.planet()),
-      (this.diameter = 0);
-  }
-  init() {
-    this.planet.loadPlugin(this.rotate(10)),
-      this.planet.loadPlugin(
-        planetaryjs.plugins.earth({
-          topojson: { file: "data/borderless-world.json" },
-          oceans: { fill: "#dddee0" },
-          land: { fill: "#f7f7f7" },
-        })
-      ),
-      this.planet.loadPlugin(
-        planetaryjs.plugins.drag({
-          onDragStart() {
-            this.plugins.rotate.pause();
-          },
-          onDragEnd() {
-            this.plugins.rotate.resume();
-          },
-        })
-      ),
-      this.planet.loadPlugin(
-        planetaryjs.plugins.pings({ color: "#df5f5f", ttl: 2e3, angle: 2 })
-      ),
-      this.locations(),
-      this.scale(),
-      this.planet.draw(this.canvas),
-      this.planet.projection.rotate([0, -25, 0]),
-      window.addEventListener("resize", () => this.scale());
-  }
-  scale() {
-    const e = window.innerWidth,
-      t = Math.max(300, Math.min(500, e - 0.6 * e)),
-      n = t / 2;
-    (this.canvas.width = t),
-      (this.canvas.height = t),
-      this.planet.projection.scale(n).translate([n, n]),
-      (this.diameter = t);
-  }
-  rotate(e) {
-    return (t) => {
-      let n = null,
-        a = !1;
-      (t.plugins.rotate = {
-        pause() {
-          a = !0;
-        },
-        resume() {
-          a = !1;
-        },
-      }),
-        t.onDraw(() => {
-          if (a || !n) n = new Date();
-          else {
-            const a = new Date(),
-              s = a - n,
-              o = t.projection.rotate();
-            (o[0] += (e * s) / 1e3),
-              o[0] >= 180 && (o[0] -= 360),
-              t.projection.rotate(o),
-              (n = a);
-          }
-        });
-    };
-  }
-  locations() {
-    d3.json("data/coordinates.json", (e, t) => {
-      if (e) return console.error(e);
-      for (const e of t.coordinates)
-        setInterval(() => {
-          this.planet.plugins.pings.add(e[0], e[1]);
-        }, Math.floor(3e3 * Math.random()) + 2e3);
-    });
-  }
 }
+
 class Scene {
   constructor() {
     this.controller = new ScrollMagic.Controller();
@@ -103,14 +31,10 @@ class Scene {
     this.controller.addScene([
       this.intro(),
       this.autodidact(),
-      // this.globe(),
       this.photo(),
-      this.node(),
       this.design(),
       this.camarts(),
       this.camartsShowcase(),
-      this.markly(),
-      this.vary(),
     ]);
   }
   intro() {
@@ -347,21 +271,6 @@ class Scene {
       duration: "100%",
     }).setTween(e);
   }
-  node() {
-    const e = new TimelineMax().add([
-      TweenMax.fromTo(
-        "#nodes path",
-        1,
-        { "stroke-dashoffset": 1200 },
-        { "stroke-dashoffset": 0, ease: Linear.easeIn }
-      ),
-    ]);
-    return new ScrollMagic.Scene({
-      triggerElement: "#nodes",
-      triggerHook: 0.5,
-      duration: "80%",
-    }).setTween(e);
-  }
   design() {
     const e = new TimelineMax().add([
       TweenMax.to("#text-design", 1, {
@@ -410,44 +319,6 @@ class Scene {
       duration: "100%",
     }).setClassToggle("#camarts", "active");
   }
-  markly() {
-    const e = new TimelineMax().add([
-      TweenMax.to("#markly-showcase-a", 1, {
-        yPercent: -10,
-        ease: Linear.easeNone,
-      }),
-      TweenMax.to("#markly-showcase-b", 1, {
-        yPercent: -30,
-        ease: Linear.easeNone,
-      }),
-    ]);
-    return new ScrollMagic.Scene({
-      triggerElement: "#markly",
-      triggerHook: 0.1,
-      duration: "100%",
-    }).setTween(e);
-  }
-  vary() {
-    const e = new TimelineMax().add([
-      TweenMax.from("#vary-showcase-a", 1, {
-        xPercent: 10,
-        ease: Linear.easeNone,
-      }),
-      TweenMax.from("#vary-showcase-b", 1, {
-        xPercent: 30,
-        ease: Linear.easeNone,
-      }),
-      TweenMax.from("#vary-showcase-c", 1, {
-        xPercent: 60,
-        ease: Linear.easeNone,
-      }),
-    ]);
-    return new ScrollMagic.Scene({
-      triggerElement: "#vary",
-      triggerHook: 0.9,
-      duration: "100%",
-    }).setTween(e);
-  }
 }
 class Node {
   constructor() {
@@ -461,85 +332,5 @@ class Node {
       this.container.scrollWidth - this.container.scrollLeft <=
       window.innerWidth + 60;
     this.container.classList = e ? "reached" : "";
-  }
-}
-class Guestbook {
-  constructor() {
-    (this.messages = this.element("recent-messages")),
-      (this.container = this.element("new-message")),
-      (this.nextButton = this.element("next-step-button")),
-      (this.contentField = this.element("message-content")),
-      (this.nameField = this.element("message-name")),
-      (this.emailField = this.element("message-email")),
-      (this.URLField = this.element("message-url"));
-  }
-  init() {
-    this.messages &&
-      this.GET((e) => {
-        200 == e.status || 201 == e.status
-          ? (this.render(JSON.parse(e.responseText)),
-            (this.messages.parentNode.classList += " fetched"))
-          : console.error("Failed to load messages");
-      });
-  }
-  render(e) {
-    e.forEach((e) =>
-      this.messages.insertAdjacentHTML("beforeend", this.template(e))
-    );
-  }
-  template(e) {
-    return `<div class="message">\n\t\t\t\t\t<header>\n\t\t\t\t\t\t<img src="${
-      e.avatar || "?"
-    }" />\n\t\t\t\t\t\t<h3>${
-      e.name
-    }</h3>\n\t\t\t\t\t</header>\n\t\t\t\t\t<div class="message-content">\n\t\t\t\t\t\t<p>${
-      e.content
-    }</p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>`;
-  }
-  element(e) {
-    return document.getElementById(e);
-  }
-  next() {
-    this.container.className = "second-step";
-  }
-  post(e) {
-    const t = {
-      post: 1008,
-      content: this.contentField.value,
-      author_name: this.nameField.value,
-      author_email: this.emailField.value,
-      author_url: this.URLField.value,
-      author_user_agent: navigator.userAgent + " DWAPI/7.0",
-    };
-    t.author_email.length > 0 && !/\S+@\S+\.\S+/.test(t.author_email)
-      ? console.info("Todo: handle invalid email address")
-      : ((e.className = "posting"),
-        (e.innerHTML = ""),
-        this.POST(t, (e) => {
-          200 == e.status || 201 == e.status
-            ? this.messageDidPost()
-            : alert("Please try again later");
-        }));
-  }
-  contentDidChange(e) {
-    this.nextButton.className = e.value.length < 5 ? "inactive" : "";
-  }
-  messageDidPost() {
-    this.container.className = "third-step";
-  }
-  request(e, t, n, a) {
-    const s = new XMLHttpRequest();
-    (s.onreadystatechange = () => {
-      4 === s.readyState && a && a(s);
-    }),
-      s.open(t, "https://blog.dandyweng.com/wp-json/wp/v2/" + e, !0),
-      s.setRequestHeader("Content-Type", "application/json"),
-      s.send(JSON.stringify(n));
-  }
-  GET(e) {
-    this.request("homepage-comment", "GET", null, e);
-  }
-  POST(e, t) {
-    this.request("comments", "POST", e, t);
   }
 }
