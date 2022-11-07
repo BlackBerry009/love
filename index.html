@@ -56,20 +56,6 @@
     </style>
     <script src="./index.js" defer></script>
     <script src="./main.js" defer></script>
-    <script>
-      const beginTime = new Date("2022/10/24").getTime();
-      setInterval(() => {
-        const now = new Date();
-        const gapTotalTime = new Date().getTime() - beginTime;
-        const gapDay = Math.floor(
-          (now.getTime() - beginTime) / (1000 * 60 * 60 * 24)
-        );
-        const time = now.toLocaleTimeString();
-        document.getElementById(
-          "subheading"
-        ).innerText = `这是我们在一起的第 ${gapDay} 天 ${time}`;
-      }, 1000);
-    </script>
   </head>
   <body>
     <section id="intro">
@@ -120,14 +106,38 @@
       <p>谢谢你，<br />带给我一份甜蜜的回忆。</p>
 
       <div id="group">
-        <img id="photo-a" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo1.jpg" />
-        <img id="photo-b" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo2.jpg" />
-        <img id="photo-c" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo5.jpg" />
-        <img id="photo-d" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo6.jpg" />
-        <img id="photo-e" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo3.jpg" />
-        <img id="photo-f" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo4.jpg" />
-        <img id="photo-g" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo8.jpg" />
-        <img id="photo-h" src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo7.jpg" />
+        <img
+          id="photo-a"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo1.jpg"
+        />
+        <img
+          id="photo-b"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo2.jpg"
+        />
+        <img
+          id="photo-c"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo5.jpg"
+        />
+        <img
+          id="photo-d"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo6.jpg"
+        />
+        <img
+          id="photo-e"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo3.jpg"
+        />
+        <img
+          id="photo-f"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo4.jpg"
+        />
+        <img
+          id="photo-g"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo8.jpg"
+        />
+        <img
+          id="photo-h"
+          src="https://cdn.jsdelivr.net/gh/BlackBerry009/img-repo/photo7.jpg"
+        />
       </div>
     </section>
 

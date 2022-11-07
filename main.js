@@ -1,9 +1,20 @@
 var globe, scene, node, guestbook;
 window.onload = () => {
   // (globe = new Globe()).init(),
-    (scene = new Scene()).init(),
+  (scene = new Scene()).init(),
     (node = new Node()),
     (guestbook = new Guestbook()).init();
+  const beginTime = new Date("2022/10/24").getTime();
+  setInterval(() => {
+    const now = new Date();
+    const gapDay = Math.floor(
+      (now.getTime() - beginTime) / (1000 * 60 * 60 * 24)
+    );
+    const time = now.toLocaleTimeString();
+    document.getElementById(
+      "subheading"
+    ).innerText = `这是我们在一起的第 ${gapDay} 天 ${time}`;
+  }, 1000);
 };
 class Globe {
   constructor() {
