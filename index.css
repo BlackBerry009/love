@@ -93,12 +93,12 @@ section .content p,
   box-shadow: 0 20px 90px 0 rgba(0, 0, 0, 0.08), 0 9px 30px 0 rgba(0, 0, 0, 0.1);
 }
 .slice.left {
-  background-image: url("http://noxt.cn/pic.png");
+  background-image: url("https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/pic.png");
   grid-area: ls;
   background-position: left;
 }
 .slice.right {
-  background-image: url("http://noxt.cn/pic2.png");
+  background-image: url("https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/pic2.png");
   grid-area: rs;
   background-position: right;
 }
