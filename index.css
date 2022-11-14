@@ -157,6 +157,9 @@ section .content p,
   transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
   will-change: transform;
 }
+#group img {
+  object-fit: cover;
+}
 @media (max-width: 600px) {
   #photography {
     margin: 100px 0;
