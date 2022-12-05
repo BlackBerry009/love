@@ -157,6 +157,25 @@ section .content p,
   transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
   will-change: transform;
 }
+#sectionPin {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  left: 0;
+  background: pink;
+}
+#sectionPin .pin-wrap {
+  height: 60vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5vh 10vw;
+}
+#sectionPin .pin-wrap > * {
+  min-width: 60vw;
+  padding: 0 5vw;
+}
+
 @media (max-width: 600px) {
   #photography {
     margin: 100px 0;
@@ -362,4 +381,3 @@ section .content p,
     width: 100%;
   }
 }
-

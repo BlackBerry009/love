@@ -1,5 +1,32 @@
 var globe, scene;
 
+window.addEventListener("load", function () {
+  let pinBoxes = document.querySelectorAll(".pin-wrap > *");
+  let pinWrap = document.querySelector(".pin-wrap");
+  let pinWrapWidth = pinWrap.offsetWidth;
+  let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+
+  // Pinning and horizontal scrolling
+
+  gsap.to(".pin-wrap", {
+    scrollTrigger: {
+      scroller: pageContainer, //locomotive-scroll
+      scrub: true,
+      trigger: "#sectionPin",
+      pin: true,
+      // anticipatePin: 1,
+      start: "top top",
+      end: pinWrapWidth,
+    },
+    x: -horizontalScrollLength,
+    ease: "none",
+  });
+
+  ScrollTrigger.addEventListener("refresh", () => scroller.update()); //locomotive-scroll
+
+  ScrollTrigger.refresh();
+});
+
 window.addEventListener("load", () => {
   const scene = new Scene();
   scene.init();
@@ -16,7 +43,7 @@ function setTime() {
     const gapDay = Math.floor(
       (now.getTime() - beginTime) / (1000 * 60 * 60 * 24)
     );
-    const time = new Date().toTimeString().split(' ')[0];
+    const time = new Date().toTimeString().split(" ")[0];
     document.getElementById(
       "subheading"
     ).innerText = `这是我们在一起的第 ${gapDay} 天 ${time}`;
