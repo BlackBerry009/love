@@ -159,21 +159,29 @@ section .content p,
 }
 #sectionPin {
   height: 100vh;
+  padding: 20vh;
   overflow: hidden;
   display: flex;
   left: 0;
   background: pink;
+  margin-bottom: 100%;
 }
 #sectionPin .pin-wrap {
-  height: 60vh;
+  height: 60%;
+  width: 400%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 5vh 10vw;
 }
-#sectionPin .pin-wrap > * {
+#sectionPin .pin-wrap .panel {
   min-width: 60vw;
   padding: 0 5vw;
+}
+
+#sectionPin .pin-wrap img {
+  height: 100%;
+  width: 100%;
 }
 
 @media (max-width: 600px) {
