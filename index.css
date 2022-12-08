@@ -189,6 +189,9 @@ section .content p,
   will-change: transform;
 }
 
+#group img {
+  object-fit: cover;
+}
 @media (max-width: 600px) {
   #photography {
     margin: 100px 0;
