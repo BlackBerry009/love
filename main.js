@@ -3,19 +3,8 @@ var globe, scene;
 window.addEventListener("load", () => {
   const scene = new Scene();
   scene.init();
-
-  let sections = gsap.utils.toArray(".panel");
-  gsap.to(sections, {
-    xPercent:  window.innerWidth * (sections.length - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#sectionPin",
-      pin: true,
-      scrub: 1,
-      snap: 1 / (sections.length - 1),
-      end: "+=3500",
-    },
-  });
+  const gsap = new Gsap();
+  gsap.init();
 });
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -167,28 +156,6 @@ class Scene {
       offset: 500,
     }).setTween(e);
   }
-  // globe() {
-  //   const e = d3.scale.linear().domain([375, 2560]).range([3, 6]),
-  //     t = new TimelineMax().add([
-  //       TweenMax.fromTo(
-  //         "#globe-container",
-  //         0.8,
-  //         { "-webkit-filter": `blur(${e(window.innerWidth)}px)` },
-  //         { "-webkit-filter": "blur(0)", ease: Linear.easeNone }
-  //       ),
-  //       TweenMax.fromTo(
-  //         "#globe",
-  //         1,
-  //         { scale: Math.max(800, window.innerWidth) / globe.diameter },
-  //         { scale: 1, y: 220, ease: Linear.easeNone }
-  //       ),
-  //     ]);
-  //   return new ScrollMagic.Scene({
-  //     triggerElement: "#content",
-  //     duration: "50%",
-  //     offset: 380,
-  //   }).setTween(t);
-  // }
   photo() {
     const e = new TimelineMax().add([
       TweenMax.to("#group", 1, {
@@ -333,17 +300,22 @@ class Scene {
     }).setClassToggle("#camarts", "active");
   }
 }
-class Node {
-  constructor() {
-    this.container = document.getElementById("nodes");
+
+class Gsap {
+  init() {
+    this.gallery();
   }
-  increment() {
-    this.container.scrollLeft += window.innerWidth;
-  }
-  didScroll() {
-    const e =
-      this.container.scrollWidth - this.container.scrollLeft <=
-      window.innerWidth + 60;
-    this.container.classList = e ? "reached" : "";
+  gallery() {
+    let sections = gsap.utils.toArray(".panel");
+    gsap.to(sections, {
+      xPercent: -200 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#sectionRow1Pin",
+        pin: true,
+        scrub: true,
+        end: "+=" + document.querySelector(".pin-wrap").offsetWidth,
+      },
+    });
   }
 }
