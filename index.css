@@ -161,23 +161,24 @@ section .content p,
   padding-top: 200px;
   height: 60%;
   overflow-x: hidden;
-  display: flex;
-  left: 0;
 }
 #sectionRow1Pin .pin-wrap {
-  width: 400%;
-  height: 120vh;
+  /* width: 400%; */
+  height: 150vh;
   display: flex;
   flex-wrap: nowrap;
   overscroll-behavior: none;
-  padding: 5vh 10vw;
+  padding: 5vh 0px;
+  margin-left: 5vw;
+  
 }
 #sectionRow1Pin .pin-wrap .panel {
   min-width: 40%;
 }
 
 .panel.description {
-  padding: 0px 50px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 #sectionRow1Pin .pin-wrap img {
