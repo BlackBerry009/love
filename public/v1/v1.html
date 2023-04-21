@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans-CN">
+  <head>
+    <title>这是我们的小破站</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <link rel="stylesheet" href="./v1.css" type="text/css" />
+    <style>
+      .heart {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: pink;
+        height: 50px;
+        width: 50px;
+        transform: rotate(-45deg);
+        animation-name: beat;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+      .heart:after {
+        background-color: pink;
+        content: "";
+        border-radius: 50%;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0px;
+        left: 25px;
+      }
+      .heart:before {
+        background-color: pink;
+        content: "";
+        border-radius: 50%;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: -25px;
+        left: 0px;
+      }
+
+      @keyframes beat {
+        0% {
+          transform: scale(1) rotate(-45deg);
+        }
+        50% {
+          transform: scale(0.6) rotate(-45deg);
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="./v1.js" defer></script>
+    <script src="./main.js" defer></script>
+  </head>
+  <body>
+    <section id="intro">
+      <header>
+        <h1 id="heading">
+          2022,<br />10/24，<br />我们在一起了
+          <span class="heart"></span>
+        </h1>
+        <h2 id="subheading"></h2>
+        <div id="slice-left" class="slice left"></div>
+        <div id="slice-right" class="slice right"></div>
+      </header>
+    </section>
+
+    <section id="content">
+      <p id="text-become-autodidact">于高中相逢。</p>
+      <p id="text-learn-from">时隔六年，<br />又一次相遇。</p>
+
+      <p id="traveling">
+        未曾想起，<br />也从未忘记，<br />
+        <span style="font-weight: bolder; color: #cc3350">我爱你</span>。
+      </p>
+
+      <p id="sentence1">
+        连我都羡慕 <br />
+        你在我心里的位置
+      </p>
+
+      <p id="sentence2">
+        活在当下，并不是结局不重要 <br />
+        而是我更在意结局 <br />
+        才更加珍惜当下
+      </p>
+
+      <p id="sentence3">
+        也许 <br />
+        你望着月亮时 <br />
+        我正在想你
+      </p>
+
+      <p id="sentence4">
+        风也温柔 <br />
+        你也温柔
+      </p>
+      <div id="globe-container" style="visibility: hidden; height: 200px">
+        <canvas id="globe"></canvas>
+      </div>
+    </section>
+
+    <section id="photography">
+      <p>谢谢你，<br />带给我一份甜蜜的回忆。</p>
+
+      <div id="group">
+        <img
+          id="photo-a"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo1.jpg"
+        />
+        <img
+          id="photo-b"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo2.jpg"
+        />
+        <img
+          id="photo-c"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo5.jpg"
+        />
+        <img
+          id="photo-d"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo6.jpg"
+        />
+        <img
+          id="photo-e"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo3.jpg"
+        />
+        <img
+          id="photo-f"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo4.jpg"
+        />
+        <img
+          id="photo-g"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo8.jpg"
+        />
+        <img
+          id="photo-h"
+          src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/photo7.jpg"
+        />
+      </div>
+
+      <div id="sectionRow1Pin">
+        <div class="pin-wrap">
+          <div class="panel description">
+            <h2>所爱隔山海， 山海亦可平。我相信真正的爱情，可以翻山越岭，跨越山河，如你我。</h2>
+            <br>
+            <h2>我真的好爱你，想每天对着你说情话，一遍一遍又一遍。</h2>
+            <br>
+            <h2>兜兜转转的相逢，确实你就是我要找的那个人。我喜欢的样子你都有，真的一刻也不想和你分开，要一直一直在一起。</h2>
+          </div>
+          <div class="panel">
+            <img
+              src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/gf.jpg"
+              alt=""
+            />
+          </div>
+          <div class="panel">
+            <img
+            src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/plane.jpg"
+            alt=""
+          />
+          </div>
+          <div class="panel">
+            <img
+            src="https://blackberry-img-bed.oss-cn-hangzhou.aliyuncs.com/letter.jpg"
+            alt=""
+          />
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="design">
+      <p id="text-design">
+        我喜欢你，喜欢你的乐观，开朗，温柔，体贴...<br />
+        你喜欢的，我愿意一起陪你<br />
+        因为 <br />
+        陪伴才是最长情的告白
+      </p>
+      <p id="text-dot-connecting" style="margin-top: 400px">
+        你的过去我不了解，你的未来我想参与
+      </p>
+    </section>
+
+    <section id="camarts" class="products" style="margin-top: 200px">
+      <div id="backdrop"></div>
+      <div id="text-camarts" class="content">
+        <p>
+          最近我特别特别特别特别<span class="a">开心</span>，因为<span class="b"
+            >有你</span
+          >，在难捱的日子里，觉得好<span class="c">幸福</span
+          >，原来生活并不是苦涩的😊。
+        </p>
+        <p>
+          你说，所有的<span class="d">巧合</span>都不是<span class="e"
+            >偶然</span
+          >
+          。是的，因为我<span class="h">蓄谋已久</span>，哈哈哈哈哈哈
+        </p>
+        <p>
+          希望深爱过的人，都可以久别重逢， <span class="f">如我们一样</span>
+        </p>
+        <div style="text-align: center">
+          <a target="_blank" class="button">我们的故事还未完待续...</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
