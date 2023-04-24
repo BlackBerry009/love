@@ -1,6 +1,6 @@
 import './index.scss'
 
-interface Props {
+export interface FlipCardProps {
     front: {
         title: string
         desc?: string
@@ -10,7 +10,7 @@ interface Props {
         desc?: string
     }
 }
-export default function FlipCard({front, back}: Props) {
+export default function FlipCard({front, back}: FlipCardProps) {
   return (
     <div className="myCard">
       <div className="innerCard">
