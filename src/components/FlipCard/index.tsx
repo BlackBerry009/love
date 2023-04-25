@@ -6,7 +6,6 @@ export interface FlipCardProps {
         desc?: string
     }
     back: {
-        title: string
         desc?: string
     }
 }
@@ -19,7 +18,6 @@ export default function FlipCard({front, back}: FlipCardProps) {
           <p>{front.desc}</p>
         </div>
         <div className="backSide">
-          <p className="title">{back.title}</p>
           <p>{back.desc}</p>
         </div>
       </div>

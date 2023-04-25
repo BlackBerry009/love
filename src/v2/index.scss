@@ -37,4 +37,31 @@
     margin-block-start: var(--size-3);
     word-break: break-word;
   }
+  #clock {
+    color: #ffffff;
+    text-align: center;
+    color: #daf6ff;
+    text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+    .time {
+      li {
+        display: inline-block;
+        list-style-type: none;
+        text-transform: uppercase;
+        padding: 10px;
+      }
+      li span {
+        display: block;
+        font-size: 20px;
+      }
+    }
+    .date {
+      letter-spacing: 0.1em;
+      font-size: 24px;
+    }
+    .text {
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      padding: 20px 0 0;
+    }
+  }
 }
