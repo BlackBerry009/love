@@ -5,7 +5,7 @@ import Version2 from './v2'
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to="/v1" />,
+    element: <Navigate to="/v2" />,
   },
   {
     path: '/v1',
